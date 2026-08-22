@@ -1,0 +1,7 @@
+# Copyright 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/
+spring.application.name: zhuatech-peopledetect
+server.port: ${SERVER_PORT:8080}
+zhuatech.people-detect.provider: ${ZHUATECH_PEOPLE_DETECT_PROVIDER:local}
+zhuatech.people-detect.base-url: ${ZHUATECH_PEOPLE_DETECT_BASE_URL:}
+zhuatech.people-detect.model: ${ZHUATECH_PEOPLE_DETECT_MODEL:object-detection-provider-model}
+zhuatech.people-detect.api-key: ${ZHUATECH_PEOPLE_DETECT_API_KEY:}
