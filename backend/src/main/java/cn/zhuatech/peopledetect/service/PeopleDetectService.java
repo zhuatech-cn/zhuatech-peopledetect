@@ -7,8 +7,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class PeopleDetectService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result analyze(Request request) {
         List<ZoneResult> zones = request.zones().stream().map(zone -> {
             double occupancy = zone.capacity() == 0 ? 0 : zone.observedPeople() * 100.0 / zone.capacity();
@@ -24,19 +30,34 @@ public class PeopleDetectService {
             zones, List.of("不做人脸识别或身份推断", "区域容量规则可审计", "生产环境应设置数据最小化和保留期限"), "LOCAL_ZONE_RULE_ENGINE");
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotEmpty List<@Valid ZoneObservation> zones,
                           @DecimalMin("1") @DecimalMax("100") double warningThreshold,
                           @DecimalMin("1") @DecimalMax("100") double criticalThreshold,
                           boolean privacyMode,
                           boolean sourceAuthorized) {
+        /**
+         * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+         */
         public Request {
             if (criticalThreshold < warningThreshold) throw new IllegalArgumentException("criticalThreshold must be >= warningThreshold");
         }
     }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record ZoneObservation(@NotBlank String zoneCode, @NotBlank String zoneName,
                                   @Min(0) int observedPeople, @Min(1) int capacity) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record ZoneResult(String zoneCode, String zoneName, int people, int capacity,
                              double occupancyPercent, String level, String action) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(String status, int totalPeople, long alertCount, boolean privacyMode,
                          String retentionPolicy, List<ZoneResult> zones, List<String> safeguards,
                          String executionMode) {}
